@@ -1,29 +1,29 @@
 import { ICatalogRepository } from '../interface/catalog-repository-interface'
 
 export class CatalogService {
-  repository: ICatalogRepository
+  _repository: ICatalogRepository
 
   constructor(repository: ICatalogRepository) {
-    this.repository = repository
+    this._repository = repository
   }
   async createProduct(data: any) {
-    const product = await this.repository.create(data)
+    const product = await this._repository.create(data)
     return product
   }
   async updateProduct(data: any) {
-    const updatedProduct = await this.repository.update(data)
+    const updatedProduct = await this._repository.update(data)
     return updatedProduct
   }
   async deleteProduct(id: number) {
-    const deletedProduct = await this.repository.delete(id)
+    const deletedProduct = await this._repository.delete(id)
     return deletedProduct
   }
   async findProduct(limit: number, offset: number) {
-    const products = await this.repository.find({ limit, offset })
+    const products = await this._repository.find({ limit, offset })
     return products
   }
   getProductById(id: number) {
-    const product = this.repository.findOne(id)
+    const product = this._repository.findOne(id)
     return product
   }
 }
