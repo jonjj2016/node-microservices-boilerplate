@@ -41,3 +41,4 @@ class CatalogController {
     }
 }
 exports.CatalogController = CatalogController;
+//# sourceMappingURL=catalog.controller.js.map

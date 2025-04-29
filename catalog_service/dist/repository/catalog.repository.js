@@ -19,3 +19,4 @@ class CatalogRepository {
     }
 }
 exports.CatalogRepository = CatalogRepository;
+//# sourceMappingURL=catalog.repository.js.map

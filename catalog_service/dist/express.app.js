@@ -8,5 +8,6 @@ const express_1 = __importDefault(require("express"));
 const catalog_routes_js_1 = require("./api/catalog.routes.js");
 exports.app = (0, express_1.default)();
 exports.app.use(express_1.default.json());
-exports.app.use(catalog_routes_js_1.catalogRoutes);
+exports.app.use('/api/v1/product', catalog_routes_js_1.catalogRoutes);
 exports.default = exports.app;
+//# sourceMappingURL=express.app.js.map

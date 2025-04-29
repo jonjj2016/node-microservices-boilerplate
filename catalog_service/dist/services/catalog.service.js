@@ -47,3 +47,4 @@ class CatalogService {
     }
 }
 exports.CatalogService = CatalogService;
+//# sourceMappingURL=catalog.service.js.map

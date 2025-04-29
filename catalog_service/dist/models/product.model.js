@@ -11,3 +11,4 @@ class Product {
     }
 }
 exports.Product = Product;
+//# sourceMappingURL=product.model.js.map

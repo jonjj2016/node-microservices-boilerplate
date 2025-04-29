@@ -4,6 +4,6 @@ import { catalogRoutes } from './api/catalog.routes.js'
 export const app = express()
 app.use(express.json())
 
-app.use(catalogRoutes)
+app.use('/api/v1/product', catalogRoutes)
 
 export default app

@@ -28,3 +28,4 @@ exports.StartServer = StartServer;
 (0, exports.StartServer)().then(() => {
     console.log('Server started');
 });
+//# sourceMappingURL=server.js.map

@@ -1,0 +1,6 @@
+POST  http://localhost:3500/api/v1/product
+Content-Type: application/json
+
+{
+    "name":"Jon Martirosyan"
+}

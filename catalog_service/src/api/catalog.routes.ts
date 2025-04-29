@@ -1,9 +1,14 @@
 import express from 'express'
 const router = express.Router()
 
-// router.get('/')
+router.get('/', (request, response) => {
+  response.send('catalog')
+})
 
-// router.post('/')
+router.post('/', (request, response) => {
+  console.log(request.body)
+  response.send('catalog')
+})
 
 // router.patch('/:id')
 

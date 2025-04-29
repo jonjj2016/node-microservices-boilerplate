@@ -19,3 +19,4 @@ class MockCatalogRepository {
     }
 }
 exports.MockCatalogRepository = MockCatalogRepository;
+//# sourceMappingURL=mock.catalog.repository.js.map

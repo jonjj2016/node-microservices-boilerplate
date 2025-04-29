@@ -71,3 +71,4 @@ var HttpStatus;
     HttpStatus[HttpStatus["NOT_EXTENDED"] = 510] = "NOT_EXTENDED";
     HttpStatus[HttpStatus["NETWORK_AUTHENTICATION_REQUIRED"] = 511] = "NETWORK_AUTHENTICATION_REQUIRED";
 })(HttpStatus || (exports.HttpStatus = HttpStatus = {}));
+//# sourceMappingURL=types.js.map
