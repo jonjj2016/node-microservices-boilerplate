@@ -12,8 +12,8 @@ export class CatalogService implements ICatalogService {
     const product = await this._repository.create(data)
     return product
   }
-  async updateProduct(data: any) {
-    const updatedProduct = await this._repository.update(data)
+  async updateProduct(id: number, data: any) {
+    const updatedProduct = await this._repository.update(id, data)
     return updatedProduct
   }
   async deleteProduct(id: number) {

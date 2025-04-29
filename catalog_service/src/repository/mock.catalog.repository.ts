@@ -1,6 +1,6 @@
 import { ICatalogRepository } from '../interface/catalog-repository-interface.js'
 import { Product } from '../models/product.model.js'
-import { Filters } from '../utils/types.js';
+import { Filters } from '../utils/types.js'
 
 export class MockCatalogRepository implements ICatalogRepository {
   async create(data: Product): Promise<Product> {
@@ -9,7 +9,7 @@ export class MockCatalogRepository implements ICatalogRepository {
     }
     return Promise.resolve(myProduct)
   }
-  async update(data: Product): Promise<any> {
+  async update(id: number, data: Product): Promise<any> {
     return Promise.resolve(data)
   }
   async delete(id: number): Promise<void> {

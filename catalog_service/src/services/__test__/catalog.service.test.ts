@@ -1,7 +1,8 @@
+import { faker } from '@faker-js/faker/.'
 import { ICatalogRepository } from '../../interface/catalog-repository-interface'
 import { ICatalogService } from '../../interface/catalog.service.interface'
 import { MockCatalogRepository } from '../../repository/mock.catalog.repository'
-import { mockProduct } from '../../utils/productFactory'
+import { mockProduct, productFactory } from '../../utils/productFactory'
 import { CatalogService } from '../catalog.service'
 
 describe('CatalogService', () => {
@@ -19,7 +20,6 @@ describe('CatalogService', () => {
       const service = new CatalogService(repository)
       const requestBody = mockProduct()
       const result = await service.createProduct(requestBody)
-      console.log('🚀 ~ test ~ result:', result)
       expect(result).toMatchObject({
         name: expect.any(String),
         description: expect.any(String),
@@ -27,7 +27,138 @@ describe('CatalogService', () => {
         stock: expect.any(Number),
       })
     })
-    test("Should throw error if product can't be created", async () => {})
-    test('Should throw error if product already exists', async () => {})
+    test("Should throw error if product can't be created", async () => {
+      const service = new CatalogService(repository)
+      const requestBody = mockProduct()
+      jest
+        .spyOn(repository, 'create')
+        .mockRejectedValue(new Error('unable to create product'))
+      await expect(service.createProduct(requestBody)).rejects.toThrow(
+        'unable to create product'
+      )
+    })
+    test('Should throw error if product already exists', async () => {
+      const service = new CatalogService(repository)
+      const requestBody = mockProduct()
+      jest
+        .spyOn(repository, 'create')
+        .mockRejectedValue(new Error('product already exists'))
+      await expect(service.createProduct(requestBody)).rejects.toThrow(
+        'product already exists'
+      )
+    })
+  })
+  describe('updateProduct', () => {
+    test('should update product', async () => {
+      const service = new CatalogService(repository)
+      const requestBody = mockProduct({
+        id: faker.number.int({ min: 10, max: 1000 }),
+      })
+      const result = await service.updateProduct(requestBody.id, requestBody)
+      expect(result).toMatchObject(requestBody)
+    })
+
+    test('throw error with no product found', async () => {
+      const service = new CatalogService(repository)
+      const requestBody = mockProduct({
+        id: faker.number.int({ min: 10, max: 1000 }),
+      })
+      jest
+        .spyOn(repository, 'update')
+        .mockRejectedValue(new Error('no product found with given id'))
+      await expect(
+        service.updateProduct(requestBody.id, requestBody)
+      ).rejects.toThrow('no product found with given id')
+    })
+  })
+  describe('deleteProduct', () => {
+    test('should delete product', async () => {
+      const service = new CatalogService(repository)
+      const requestBody = mockProduct({
+        id: faker.number.int({ min: 10, max: 1000 }),
+      })
+      const result = await service.deleteProduct(requestBody.id)
+      expect(result).toBeUndefined()
+    })
+
+    test('throw error with no product found', async () => {
+      const service = new CatalogService(repository)
+      jest
+        .spyOn(repository, 'delete')
+        .mockRejectedValue(new Error('no product found with given id'))
+      await expect(
+        service.deleteProduct(faker.number.int({ min: 10, max: 1000 }))
+      ).rejects.toThrow('no product found with given id')
+    })
+  })
+  describe('findAllProducts', () => {
+    test('should find all products', async () => {
+      const service = new CatalogService(repository)
+      const randomLimit = faker.number.int({ min: 10, max: 50 })
+      const products = productFactory.buildList(randomLimit)
+      jest
+        .spyOn(repository, 'find')
+        .mockImplementationOnce(() => Promise.resolve(products))
+      const result = await service.findProduct(randomLimit, 0)
+
+      expect(result.length).toBeGreaterThan(0)
+      expect(result).toMatchObject(products)
+    })
+
+    test('throw error with no products found', async () => {
+      const service = new CatalogService(repository)
+      jest
+        .spyOn(repository, 'find')
+        .mockRejectedValue(new Error('no products found'))
+      await expect(
+        service.findProduct(faker.number.int({ min: 10, max: 50 }), 0)
+      ).rejects.toThrow('no products found')
+    })
+  })
+
+  describe('getProductById', () => {
+    test('should find product by id', async () => {
+      const service = new CatalogService(repository)
+
+      const product = productFactory.build()
+      jest
+        .spyOn(repository, 'findOne')
+        .mockImplementationOnce(() => Promise.resolve(product))
+      const result = await service.getProductById(product.id!)
+      expect(result).toMatchObject(product)
+    })
+
+    test('throw error with no product found', async () => {
+      const service = new CatalogService(repository)
+      jest
+        .spyOn(repository, 'findOne')
+        .mockRejectedValue(new Error('no product found with given id'))
+      await expect(
+        service.getProductById(faker.number.int({ min: 10, max: 1000 }))
+      ).rejects.toThrow('no product found with given id')
+    })
+  })
+  describe('getOneProduct', () => {
+    test('should find product by id', async () => {
+      const service = new CatalogService(repository)
+      const product = productFactory.build()
+      jest
+        .spyOn(repository, 'findOne')
+        .mockImplementationOnce(() => Promise.resolve(product))
+      const result = await service.getOneProduct({ id: product.id })
+      expect(result).toMatchObject(product)
+    })
+
+    test('throw error with no product found', async () => {
+      const service = new CatalogService(repository)
+      jest
+        .spyOn(repository, 'findOne')
+        .mockRejectedValue(new Error('no product found with given id'))
+      await expect(
+        service.getOneProduct({
+          id: String(faker.number.int({ min: 10, max: 1000 })),
+        })
+      ).rejects.toThrow('no product found with given id')
+    })
   })
 })
