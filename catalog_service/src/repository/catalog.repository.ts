@@ -1,5 +1,5 @@
-import { ICatalogRepository } from '../interface/catalog-repository-interface'
-import { Product } from '../models/product.model'
+import { ICatalogRepository } from '../interface/catalog-repository-interface.js'
+import { Product } from '../models/product.model.js'
 
 export class CatalogRepository implements ICatalogRepository {
   create(data: Product): Promise<Product> {

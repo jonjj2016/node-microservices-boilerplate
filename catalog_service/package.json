@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsc-watch --onSuccess \"nodemon dist/server.js\"",
+    "start": "node dist/server.js",
+    "build": "tsc -p ."
   },
   "keywords": [],
   "author": "",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "@types/node": "^22.15.3",
     "ts-node": "^10.9.2",
+    "tsc-watch": "^6.2.1",
     "typescript": "^5.8.3"
   }
 }

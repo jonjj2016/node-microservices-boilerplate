@@ -1,5 +1,5 @@
-import { Product } from '../models/product.model';
-import { Filters } from '../utils/types'
+import { Product } from '../models/product.model.js'
+import { Filters } from '../utils/types.js'
 
 export interface ICatalogService {
   createProduct(input: Product): Promise<any>

@@ -1,6 +1,6 @@
-import { ICatalogRepository } from '../interface/catalog-repository-interface'
-import { ICatalogService } from '../interface/catalog.service.interface'
-import { Filters } from '../utils/types'
+import { ICatalogRepository } from '../interface/catalog-repository-interface.js'
+import { ICatalogService } from '../interface/catalog.service.interface.js'
+import { Filters } from '../utils/types.js'
 
 export class CatalogService implements ICatalogService {
   _repository: ICatalogRepository

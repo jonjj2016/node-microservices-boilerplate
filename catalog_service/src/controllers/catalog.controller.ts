@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
-import { ICatalogController } from '../interface/catalog.controller.interface'
-import { ICatalogService } from '../interface/catalog.service.interface'
+import { ICatalogController } from '../interface/catalog.controller.interface.js'
+import { ICatalogService } from '../interface/catalog.service.interface.js'
 
 export class CatalogController implements ICatalogController {
   private _service: ICatalogService
