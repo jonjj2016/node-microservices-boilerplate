@@ -1,6 +1,8 @@
 import { ICatalogRepository } from '../interface/catalog-repository-interface'
+import { ICatalogService } from '../interface/catalog.service.interface'
+import { Filters } from '../utils/types'
 
-export class CatalogService {
+export class CatalogService implements ICatalogService {
   _repository: ICatalogRepository
 
   constructor(repository: ICatalogRepository) {
@@ -25,5 +27,8 @@ export class CatalogService {
   getProductById(id: number) {
     const product = this._repository.findOne(id)
     return product
+  }
+  getOneProduct(filter: Filters): Promise<any> {
+    return this._repository.find(filter)
   }
 }
