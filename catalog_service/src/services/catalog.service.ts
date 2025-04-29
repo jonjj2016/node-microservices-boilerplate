@@ -21,14 +21,14 @@ export class CatalogService implements ICatalogService {
     return deletedProduct
   }
   async findProduct(limit: number, offset: number) {
-    const products = await this._repository.find({ limit, offset })
+    const products = await this._repository.find(limit, offset)
     return products
   }
   getProductById(id: number) {
-    const product = this._repository.findOne(id)
+    const product = this._repository.findOne({ id })
     return product
   }
   getOneProduct(filter: Filters): Promise<any> {
-    return this._repository.find(filter)
+    return this._repository.findOne(filter)
   }
 }
