@@ -1,19 +1,21 @@
 import express from 'express'
+import { CatalogRepository } from '../repository/catalog.repository'
+import { CatalogService } from '../services/catalog.service'
+import { CatalogController } from '../controllers/catalog.controller'
+
+const repository = new CatalogRepository()
+export const service = new CatalogService(repository)
+const controller = new CatalogController(service)
 const router = express.Router()
 
-router.get('/', (request, response) => {
-  response.send('catalog')
-})
+router.get('/products', controller.findProducts.bind(controller))
 
-router.post('/', (request, response) => {
-  console.log(request.body)
-  response.send('catalog')
-})
+router.post('/products', controller.createProduct.bind(controller))
 
-// router.patch('/:id')
+router.patch('/products/:id', controller.updateProducts.bind(controller))
 
-// router.get('/:id')
+router.get('/products/:id', controller.getProductById.bind(controller))
 
-// router.delete('/:id')
+router.delete('/products/:id', controller.deleteProduct.bind(controller))
 
 export { router as catalogRoutes }
