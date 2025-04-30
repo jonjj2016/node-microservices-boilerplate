@@ -1,11 +1,14 @@
 {
   "folders": [
-	{
-		"path": "node_microservices/catalog_service"
-	},
-	{
-		"path": "node_microservices/order_service"
-	}
-],
+    {
+      "path": "node_microservices/catalog_service"
+    },
+    {
+      "path": "node_microservices/order_service"
+    },
+    {
+      "path": "node_microservices/db"
+    }
+  ],
   "settings": {}
 }
