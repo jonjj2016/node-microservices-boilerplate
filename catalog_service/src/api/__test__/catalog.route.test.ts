@@ -23,7 +23,7 @@ describe('Catalog routes', () => {
         .mockImplementationOnce(() => Promise.resolve(product))
 
       const response = await request(app)
-        .post('/products')
+        .post('/')
         .send(requestBody)
         .set('Accept', 'application/json')
 
@@ -34,7 +34,7 @@ describe('Catalog routes', () => {
       const requestBody = mockRequest()
       const { name, ...rest } = requestBody
       const response = await request(app)
-        .post('/products')
+        .post('/')
         .send({ ...rest, name: '' })
         .set('Accept', 'application/json')
 
@@ -50,7 +50,7 @@ describe('Catalog routes', () => {
         )
 
       const response = await request(app)
-        .post('/products')
+        .post('/')
         .send(requestBody)
         .set('Accept', 'application/json')
 
@@ -71,7 +71,7 @@ describe('Catalog routes', () => {
         .mockImplementationOnce(() => Promise.resolve(product))
 
       const response = await request(app)
-        .patch(`/products/${product.id}`)
+        .patch(`/${product.id}`)
         .send(requestBody)
         .set('Accept', 'application/json')
 
@@ -86,7 +86,7 @@ describe('Catalog routes', () => {
         stock: product.stock,
       }
       const response = await request(app)
-        .patch(`/products/${product.id}`)
+        .patch(`/${product.id}`)
         .send(requestBody)
         .set('Accept', 'application/json')
 
@@ -107,7 +107,7 @@ describe('Catalog routes', () => {
         )
 
       const response = await request(app)
-        .patch(`/products/${product.id}`)
+        .patch(`/${product.id}`)
         .send(requestBody)
         .set('Accept', 'application/json')
 
@@ -124,7 +124,7 @@ describe('Catalog routes', () => {
         .mockImplementationOnce(() => Promise.resolve(product))
 
       const response = await request(app)
-        .get(`/products/${product.id}`)
+        .get(`/${product.id}`)
         .set('Accept', 'application/json')
 
       expect(response.status).toBe(HttpStatus.OK)
@@ -142,7 +142,7 @@ describe('Catalog routes', () => {
         )
 
       const response = await request(app)
-        .get(`/products/${product.id}`)
+        .get(`/${product.id}`)
         .set('Accept', 'application/json')
 
       expect(response.status).toBe(500)
@@ -160,7 +160,7 @@ describe('Catalog routes', () => {
         .mockImplementationOnce(() => Promise.resolve())
 
       const response = await request(app)
-        .delete(`/products/${product.id}`)
+        .delete(`/${product.id}`)
         .set('Accept', 'application/json')
 
       expect(response.status).toBe(HttpStatus.NO_CONTENT)
@@ -177,7 +177,7 @@ describe('Catalog routes', () => {
         )
 
       const response = await request(app)
-        .delete(`/products/${product.id}`)
+        .delete(`/${product.id}`)
         .set('Accept', 'application/json')
 
       expect(response.status).toBe(500)
@@ -196,7 +196,7 @@ describe('Catalog routes', () => {
         .mockImplementationOnce(() => Promise.resolve(products))
 
       const response = await request(app)
-        .get(`/products?limit=${randomLimit}&offset=0`)
+        .get(`/?limit=${randomLimit}&offset=0`)
         .set('Accept', 'application/json')
 
       expect(response.status).toBe(HttpStatus.OK)
@@ -211,7 +211,7 @@ describe('Catalog routes', () => {
         )
 
       const response = await request(app)
-        .get(`/products`)
+        .get(`/`)
         .set('Accept', 'application/json')
 
       expect(response.status).toBe(500)

@@ -8,14 +8,14 @@ export const service = new CatalogService(repository)
 const controller = new CatalogController(service)
 const router = express.Router()
 
-router.get('/products', controller.findProducts.bind(controller))
+router.get('/', controller.findProducts.bind(controller))
 
-router.post('/products', controller.createProduct.bind(controller))
+router.post('/', controller.createProduct.bind(controller))
 
-router.patch('/products/:id', controller.updateProducts.bind(controller))
+router.patch('/:id', controller.updateProducts.bind(controller))
 
-router.get('/products/:id', controller.getProductById.bind(controller))
+router.get('/:id', controller.getProductById.bind(controller))
 
-router.delete('/products/:id', controller.deleteProduct.bind(controller))
+router.delete('/:id', controller.deleteProduct.bind(controller))
 
 export { router as catalogRoutes }

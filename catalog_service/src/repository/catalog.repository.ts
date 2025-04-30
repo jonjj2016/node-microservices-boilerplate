@@ -4,18 +4,21 @@ import { Filters } from '../utils/types.js'
 
 export class CatalogRepository implements ICatalogRepository {
   create(data: Product): Promise<Product> {
-    throw new Error('Method not implemented CatalogRepository')
+    return Promise.resolve({ ...data, id: 1 })
   }
-  find(data: any): Promise<Product[]> {
-    throw new Error('Method not implemented CatalogRepository')
+  find(limit: number, offset: number, filters: Filters): Promise<Product[]> {
+    return Promise.resolve([{} as Product])
   }
   update(data: any): Promise<Product> {
-    throw new Error('Method not implemented CatalogRepository')
+    return Promise.resolve(data)
   }
   findOne(filters: Filters): Promise<Product> {
-    throw new Error('Method not implemented CatalogRepository')
+    return Promise.resolve({} as Product)
   }
   delete(id: number): Promise<void> {
-    throw new Error('Method not implemented CatalogRepository')
+    return Promise.resolve()
+  }
+  findById(id: number): Promise<Product> {
+    return Promise.resolve({} as Product)
   }
 }

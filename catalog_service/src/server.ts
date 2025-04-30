@@ -1,5 +1,6 @@
 import expressApp from './express.app.js'
-
+import dotenv from 'dotenv'
+dotenv.config()
 const PORT = process.env.PORT || 3500
 
 export const StartServer = async () => {
