@@ -27,7 +27,7 @@ describe('Catalog routes', () => {
         .send(requestBody)
         .set('Accept', 'application/json')
 
-      expect(response.status).toBe(201)
+      expect(response.status).toBe(HttpStatus.CREATED)
       expect(response.body).toEqual(product)
     })
     test('should return with validation error code: 404', async () => {
@@ -38,7 +38,7 @@ describe('Catalog routes', () => {
         .send({ ...rest, name: '' })
         .set('Accept', 'application/json')
 
-      expect(response.status).toBe(400)
+      expect(response.status).toBe(HttpStatus.BAD_REQUEST)
       expect(response.body).toEqual('Name should not be empty')
     })
     test('should response with internal error code: 500 ', async () => {
@@ -54,7 +54,7 @@ describe('Catalog routes', () => {
         .send(requestBody)
         .set('Accept', 'application/json')
 
-      expect(response.status).toBe(500)
+      expect(response.status).toBe(HttpStatus.INTERNAL_SERVER_ERROR)
       expect(response.body).toEqual('error occurred on create product')
     })
   })
@@ -90,7 +90,7 @@ describe('Catalog routes', () => {
         .send(requestBody)
         .set('Accept', 'application/json')
 
-      expect(response.status).toBe(400)
+      expect(response.status).toBe(HttpStatus.BAD_REQUEST)
       expect(response.body).toEqual('Price should be greater than 0')
     })
     test('should response with internal error code: 500 ', async () => {
