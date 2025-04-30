@@ -14,22 +14,16 @@ export class CatalogController implements ICatalogController {
   }
 
   async createProduct(request: Request, response: Response) {
-    console.log(
-      '🚀 ~ CatalogController ~ createProduct ~ request.body:',
-      request.body
-    )
     try {
       const { error, input } = await RequestValidator(
         CreateProductRequest,
         request.body
       )
-      console.log('🚀 ~ CatalogController ~ createProduct ~ input:', input)
 
       if (error !== undefined && error !== false) {
         return response.status(400).json(error)
       }
       const data = await this._service.createProduct(input)
-      console.log('🚀 ~ CatalogController ~ createProduct ~ data:', data)
       return response.status(HttpStatus.CREATED).json(data)
     } catch (error) {
       response
