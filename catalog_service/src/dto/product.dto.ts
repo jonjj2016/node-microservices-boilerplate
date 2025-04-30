@@ -10,13 +10,10 @@ export class CreateProductRequest {
   @IsString()
   @IsNotEmpty({ message: 'Name should not be empty' })
   name: string
-
   @IsString()
   description: string
-
   @IsNumber()
   stock: number
-
   @Min(1)
   @IsNumber()
   price: number
