@@ -1,9 +1,10 @@
-POST  http://localhost:8000/products
+PATCH   http://localhost:8000/products/2
 Content-Type: application/json
 
 {
-    "name":"Jon Martirosyan",
-    "description":"Some description",
-    "stock":23,
-    "price":45
+  "id": 2,
+  "name": "IPhone 16 Pro Max updated",
+  "description": "Some phone",
+  "price": 1450,
+  "stock": 23
 }

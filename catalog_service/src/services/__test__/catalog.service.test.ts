@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker/.'
-import { ICatalogRepository } from '../../interface/catalog-repository-interface'
+import { ICatalogRepository } from '../../interface/catalog.repository-interface'
 import { ICatalogService } from '../../interface/catalog.service.interface'
 import { mockProduct, productFactory } from '../../utils/productFactory'
 import { CatalogService } from '../catalog.service'
