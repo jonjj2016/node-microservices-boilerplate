@@ -6,5 +6,5 @@ export interface ICatalogRepository {
   update(id: number, data: any): Promise<Product>
   find(limit: number, offset: number, filters?: Filters): Promise<Product[]>
   findOne(filters: Filters): Promise<Product>
-  delete(id: number): Promise<void>
+  delete(id: number): Promise<any>
 }

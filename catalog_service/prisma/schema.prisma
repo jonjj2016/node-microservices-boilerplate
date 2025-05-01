@@ -14,17 +14,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-// export class Product {
-//   constructor(
-//     public readonly name: string,
-//     public readonly price: number,
-//     public readonly stock: number,
-//     public readonly description: string,
-//     public readonly id?: number
-//   ) {}
-// }
-
 model Product {
   id Int @id @default(autoincrement())
   name String

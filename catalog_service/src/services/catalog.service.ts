@@ -1,4 +1,4 @@
-import { ICatalogRepository } from '../interface/catalog-repository-interface.js'
+import { ICatalogRepository } from '../interface/catalog.repository-interface.js'
 import { ICatalogService } from '../interface/catalog.service.interface.js'
 import { Filters } from '../utils/types.js'
 
