@@ -13,6 +13,7 @@ export class CatalogRepository implements ICatalogRepository {
     return this._prisma.product.create({ data })
   }
 
+
   async find(
     limit: number,
     offset: number,
