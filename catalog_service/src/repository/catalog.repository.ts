@@ -1,8 +1,13 @@
+import { PrismaClient } from '@prisma/client'
 import { ICatalogRepository } from '../interface/catalog-repository-interface.js'
 import { Product } from '../models/product.model.js'
 import { Filters } from '../utils/types.js'
 
 export class CatalogRepository implements ICatalogRepository {
+  _prisma: PrismaClient
+  constructor() {
+    this._prisma = new PrismaClient()
+  }
   create(data: Product): Promise<Product> {
     return Promise.resolve({ ...data, id: 1 })
   }
