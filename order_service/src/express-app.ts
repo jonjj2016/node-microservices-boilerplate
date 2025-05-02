@@ -8,7 +8,6 @@ export const app = express()
 
 app.use(cors())
 app.use(express.json())
-
 app.use('/carts', cartRoutes)
 app.use('/orders', orderRoutes)
 export default app
