@@ -1,0 +1,10 @@
+PATCH     http://localhost:9001/carts/9
+Content-Type: application/json
+
+{
+  "id": 2,
+  "name": "IPhone 16 Pro Max updated",
+  "description": "Some phone",
+  "price": 1450,
+  "stock": 23
+}
