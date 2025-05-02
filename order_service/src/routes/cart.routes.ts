@@ -1,8 +1,13 @@
 import express from 'express'
+import * as service from '../services/cart.service'
+
 const router = express.Router()
 
-router.get('/', (request, response) => {
-  response.status(200).json({ message: 'Hello there Request:GET' })
+router.get('/', async (request, response) => {
+  const limit = 10
+  const offset = 0
+  const res = await service.GetAllCarts(limit, offset)
+  response.status(200).json({ message: 'Hello there Request:GET', res })
 })
 
 router.post('/', (request, response) => {
